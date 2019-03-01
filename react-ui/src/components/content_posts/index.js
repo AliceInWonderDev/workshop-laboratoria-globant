@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
 
 import Post from '../../components/post/';
 
@@ -15,20 +16,17 @@ class ContentPosts extends React.Component {
 
     async componentDidMount() {
         try {
-            const response = await fetch("http://localhost:3001/posts/", {
-                method: 'GET',
-                headers:{
+            const response = await axios.get("http://localhost:3001/posts/", {
+                headers: {
                     "Authorization": "whatever-you-want",
                     "content-type" : "application/json"
                 }
             });
-            const json = await response.json();
-            
             this.setState({
-                posts: json,
+                posts: await response.data,
             });
         } catch(err) {
-            console.error('Error:', err);
+            console.log(`Error: ${err}`);
         }
     }
 
