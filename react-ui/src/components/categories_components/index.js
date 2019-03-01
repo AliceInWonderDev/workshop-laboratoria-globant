@@ -1,5 +1,6 @@
 import React from 'react';
+import Navbar from '../navbar/';
 
-const Categories = () => <h1>Hola Chicas de laboratoria</h1>
+const Categories = () => <Navbar />
 
 export default Categories;
