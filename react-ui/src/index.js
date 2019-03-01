@@ -6,8 +6,9 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<MuiThemeProvider>
-        <App />
-    </MuiThemeProvider>,
-    document.getElementById('root'));
+    <App />
+  </MuiThemeProvider>,
+  document.getElementById('root')
+);
 
 serviceWorker.unregister();

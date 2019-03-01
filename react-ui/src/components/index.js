@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Categories from './categories_components/';
+import Categories from '../views/categories/';
 
 const App = () => <BrowserRouter>
     <Switch>
