@@ -13,20 +13,23 @@ class ContentPosts extends React.Component {
         this.handleRenderPostCard = this.handleRenderPostCard.bind(this);
     }
 
-    componentDidMount() {
-        fetch("http://localhost:3001/posts/", {
-            method: 'GET',
-            headers:{
-                "Authorization": "whatever-you-want",
-                "content-type" : "application/json"
-            }
-        }).then(res => res.json())
-        .then(response => {
-            this.setState({
-                posts: response,
+    async componentDidMount() {
+        try {
+            const response = await fetch("http://localhost:3001/posts/", {
+                method: 'GET',
+                headers:{
+                    "Authorization": "whatever-you-want",
+                    "content-type" : "application/json"
+                }
             });
-        })
-        .catch(error => console.error('Error:', error));
+            const json = await response.json();
+            
+            this.setState({
+                posts: json,
+            });
+        } catch(err) {
+            console.error('Error:', err);
+        }
     }
 
     handleRenderPostCard() {
