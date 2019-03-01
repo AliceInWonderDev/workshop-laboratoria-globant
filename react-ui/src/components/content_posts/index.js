@@ -1,5 +1,8 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+
 import Post from '../../components/post/';
+
 
 class ContentPosts extends React.Component {
     constructor() {
@@ -7,6 +10,7 @@ class ContentPosts extends React.Component {
         this.state = {
             posts: [],
         };
+        this.handleRenderPostCard = this.handleRenderPostCard.bind(this);
     }
 
     componentDidMount() {
@@ -25,11 +29,17 @@ class ContentPosts extends React.Component {
         .catch(error => console.error('Error:', error));
     }
 
-    
+    handleRenderPostCard() {
+        return(
+            this.state.posts.map(post => <Post key={post.id} post={post} />)
+        );
+    }
 
     render() {
         return(
-            <Post />
+            <Grid item md={8}>
+                { this.handleRenderPostCard() }
+            </Grid>
         );
     }
 };
