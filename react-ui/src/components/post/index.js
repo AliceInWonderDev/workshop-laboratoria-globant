@@ -7,9 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import prettyDate from '../../helpers/date_format';
+
 
 const CardCategory = ({ post }) => {
-    console.log(post);
     return(
         <Card>
             <CardHeader
@@ -19,7 +20,7 @@ const CardCategory = ({ post }) => {
                     </Avatar>
                 }
                 title={post.title}
-                subheader={post.timestamp}
+                subheader={prettyDate(post.timestamp)}
             />
             <CardContent>
                 <Typography component="p">
