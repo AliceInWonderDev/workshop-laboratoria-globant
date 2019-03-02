@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import prettyDate from '../../helpers/date_format';
-
+import getAllFirstLetter from '../../helpers/string_format';
 
 const CardCategory = ({ post }) => {
     return(
@@ -16,7 +16,7 @@ const CardCategory = ({ post }) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="Recipe" >
-                        {post.author.charAt(0).toUpperCase()}
+                        {getAllFirstLetter(post.author)}
                     </Avatar>
                 }
                 title={post.title}
