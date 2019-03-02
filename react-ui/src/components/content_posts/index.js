@@ -1,13 +1,21 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 
 import Post from '../../components/post/';
 
+const styles = theme => ({
+    bla: {
+        marginTop: 50,
+        marginLeft: "auto",
+        marginRight: "auto",
+    }
+});
 
 class ContentPosts extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             posts: [],
         };
@@ -37,12 +45,13 @@ class ContentPosts extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         return(
-            <Grid item md={8}>
+            <Grid item md={8} className={classes.bla}>
                 { this.handleRenderPostCard() }
             </Grid>
         );
     }
 };
 
-export default ContentPosts;
+export default withStyles(styles)(ContentPosts);

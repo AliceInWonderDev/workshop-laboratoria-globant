@@ -9,6 +9,9 @@ import prettyDate from '../../helpers/date_format';
 import getAllFirstLetter from '../../helpers/string_format';
 
 const styles = theme => ({
+    root: {
+        marginBottom: 25,
+    },
     actions: {
         display: 'flex',
     },
@@ -61,7 +64,7 @@ class Post extends Component {
     render() {
         const { classes, post } = this.props;
         return (
-            <Card>
+            <Card className={classes.root}>
                 <CardHeader
                     avatar={
                         <Avatar aria-label="Recipe" className={classes.avatar}>
