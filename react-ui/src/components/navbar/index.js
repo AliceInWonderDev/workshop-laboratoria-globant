@@ -14,7 +14,7 @@ const Navbar = () => <div>
     <AppBar position="static" color="default">
         <Toolbar>
             <Typography variant="h6" color="inherit">
-                Workshop Laboratoria - Globant Chile!
+                Workshop de React y Redux - Globant Chile / Laboratoria
             </Typography>
         </Toolbar>
     </AppBar>
