@@ -34,7 +34,7 @@ class Categories extends Component {
     }
 
     render() {
-        return(<Typography variant="body1" color="inherit">
+        return(<Typography color="inherit">
             Filtrar por: { this.handleShowCategories() }
         </Typography>)
     }

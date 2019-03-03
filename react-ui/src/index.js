@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<MuiThemeProvider>
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+    suppressDeprecationWarnings: true
+  }
+});
+
+ReactDOM.render(<MuiThemeProvider theme={theme}>
     <App />
   </MuiThemeProvider>,
   document.getElementById('root')
