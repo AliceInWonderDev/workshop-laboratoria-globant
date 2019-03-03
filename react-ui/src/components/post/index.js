@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Card, CardHeader, CardContent, CardActions, Collapse, Avatar, IconButton, Typography } from '@material-ui/core';
-import { ThumbUp, ThumbDown, Comment, ExpandMore, MoreVert } from '@material-ui/icons/';
+import { ThumbUp, ThumbDown, Comment, ModeComment, ExpandMore, MoreVert } from '@material-ui/icons/';
 import { withStyles } from '@material-ui/core/styles';
 import { red, grey } from '@material-ui/core/colors';
 import classnames from 'classnames';
@@ -107,7 +107,7 @@ class Post extends Component {
                 <CardHeader
                     avatar={
                         <Avatar aria-label="Recipe" className={classes.avatar}>
-                            {getAllFirstLetter(post.author)}
+                            {getAllFirstLetter(post.category)}
                         </Avatar>
                     }
                     action={
@@ -115,12 +115,15 @@ class Post extends Component {
                             <MoreVert />
                         </IconButton>
                     }
-                    title={post.title}
+                    title={`Categoria: ${post.category.toUpperCase()}`}
                     subheader={prettyDate(post.timestamp)}
                 />
 
                 <CardContent>
-                    <Typography component="p">
+                    <Typography variant="title">
+                        {post.title}
+                    </Typography>
+                    <Typography component="body1">
                         { post.body }
                     </Typography>
                 </CardContent>
@@ -138,7 +141,7 @@ class Post extends Component {
 
                     <div className={classes.toRight} onClick={this.handleExpandClick}>
                         <span className={classes.commentStyle}>
-                            <Comment />
+                            { this.state.commentsNumber === 0 ? <ModeComment /> : <Comment /> }
                         </span>
                         <span className={classes.commentsNumber}>{this.state.commentsNumber}</span>
                         <IconButton

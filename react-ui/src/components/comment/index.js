@@ -42,7 +42,7 @@ class CommentComponent extends Component{
                             {getAllFirstLetter(comment.author)}
                         </Avatar>
                     }
-                    title={comment.author}
+                    title={`Escrito por: ${comment.author}`}
                     subheader={prettyDate(comment.timestamp)}
                 />
                 <CardContent>
