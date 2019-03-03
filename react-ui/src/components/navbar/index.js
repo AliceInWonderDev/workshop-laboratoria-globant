@@ -4,21 +4,27 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
-    root: {
-      flexGrow: 1,
-    }
-  };
+import Categories from '../categories';
 
-const Navbar = () => <div>
+const styles = theme => ({
+    centerContent: {
+        marginLeft: "auto",
+        marginRight: "auto",
+    }
+});
+
+const Navbar = ({ classes }) => <React.Fragment>
     <AppBar position="static" color="default">
-        <Toolbar>
+        <Toolbar className={classes.centerContent}>
             <Typography variant="h6" color="inherit">
                 Workshop de React y Redux - Globant Chile / Laboratoria
             </Typography>
         </Toolbar>
+        <Toolbar className={classes.centerContent}>
+            <Categories />
+        </Toolbar>
     </AppBar>
-</div>
+</React.Fragment>
 
 
 export default withStyles(styles)(Navbar);

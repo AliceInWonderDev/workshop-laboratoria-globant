@@ -123,7 +123,7 @@ class Post extends Component {
                     <Typography variant="title">
                         {post.title}
                     </Typography>
-                    <Typography component="body1">
+                    <Typography component="p">
                         { post.body }
                     </Typography>
                 </CardContent>
