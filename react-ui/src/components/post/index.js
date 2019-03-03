@@ -48,10 +48,11 @@ const styles = theme => ({
 });
 
 class Post extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            expanded: false
+            expanded: false,
+            likes: this.props.post.voteScore,
         }
     }
 
@@ -60,6 +61,18 @@ class Post extends Component {
             expanded: !this.state.expanded
         });
     };
+
+    handleAddLikes = () => {
+        this.setState({
+            likes: this.state.likes + 1
+        })
+    }
+
+    handleRemoveLikes = () => {
+        this.setState({
+            likes: this.state.likes - 1
+        })
+    }
 
     render() {
         const { classes, post } = this.props;
@@ -87,13 +100,13 @@ class Post extends Component {
                 </CardContent>
 
                 <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Like post">
+                    <IconButton aria-label="Like post" onClick={this.handleAddLikes}>
                         <ThumbUp />
                     </IconButton>
                     <span className={classes.likesNumber}>
-                        {post.voteScore}
+                        {this.state.likes}
                     </span>
-                    <IconButton aria-label="Dislike post">
+                    <IconButton aria-label="Dislike post" onClick={this.handleRemoveLikes}>
                         <ThumbDown />
                     </IconButton>
 
