@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Card, CardHeader, CardContent, CardActions, Collapse, Avatar, IconButton, Typography } from '@material-ui/core';
 import { ThumbUp, ThumbDown, Comment, ExpandMore, MoreVert } from '@material-ui/icons/';
 import { withStyles } from '@material-ui/core/styles';
 import { red, grey } from '@material-ui/core/colors';
 import classnames from 'classnames';
-
+import CommentComponent from '../comment';
 import prettyDate from '../../helpers/date_format';
 import getAllFirstLetter from '../../helpers/string_format';
 
@@ -53,6 +54,25 @@ class Post extends Component {
         this.state = {
             expanded: false,
             likes: this.props.post.voteScore,
+            comments: [],
+            commentsNumber: 0,
+        }
+    }
+
+    async componentDidMount() {
+        try {
+            const response = await axios.get(`http://localhost:3001/posts/${this.props.post.id}/comments`, {
+                headers: {
+                    "Authorization": "whatever-you-want",
+                    "content-type" : "application/json"
+                }
+            });
+            this.setState({
+                comments: await response.data,
+                commentsNumber: await response.data.length,
+            });
+        } catch(err) {
+            console.log(`Error: ${err}`);
         }
     }
 
@@ -72,6 +92,12 @@ class Post extends Component {
         this.setState({
             likes: this.state.likes - 1
         })
+    }
+
+    handleRenderComments = () => {
+        return(
+            this.state.comments.map(comment => <CommentComponent key={comment.id} comment={comment} />)
+        )
     }
 
     render() {
@@ -114,7 +140,7 @@ class Post extends Component {
                         <span className={classes.commentStyle}>
                             <Comment />
                         </span>
-                        <span className={classes.commentsNumber}>0</span>
+                        <span className={classes.commentsNumber}>{this.state.commentsNumber}</span>
                         <IconButton
                             className={classnames(classes.expand, {[classes.expandOpen]: this.state.expanded,})}
                             aria-expanded={this.state.expanded}
@@ -125,7 +151,7 @@ class Post extends Component {
                 </CardActions>
 
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                    <CardContent />
+                    { this.handleRenderComments() }
                 </Collapse>
             </Card>
         );

@@ -47,7 +47,7 @@ class ContentPosts extends React.Component {
     render() {
         const { classes } = this.props;
         return(
-            <Grid item md={8} className={classes.bla}>
+            <Grid item md={6} className={classes.bla}>
                 { this.handleRenderPostCard() }
             </Grid>
         );
