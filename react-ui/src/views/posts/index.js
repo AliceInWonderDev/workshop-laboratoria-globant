@@ -6,7 +6,7 @@ import BottonTo from '../../components/bottons';
 const Posts = () => {
     return(
         <React.Fragment>
-            <Navbar />
+            <Navbar show/>
             <ContentPosts />
             <BottonTo path="new-post"/>
         </React.Fragment>
