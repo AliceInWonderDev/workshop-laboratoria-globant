@@ -6,7 +6,7 @@ import axios from 'axios';
 import Post from '../../components/post/';
 
 const styles = theme => ({
-    bla: {
+    spacing: {
         marginTop: 50,
         marginLeft: "auto",
         marginRight: "auto",
@@ -47,7 +47,7 @@ class ContentPosts extends React.Component {
     render() {
         const { classes } = this.props;
         return(
-            <Grid item md={6} className={classes.bla}>
+            <Grid item md={6} className={classes.spacing}>
                 { this.handleRenderPostCard() }
             </Grid>
         );
