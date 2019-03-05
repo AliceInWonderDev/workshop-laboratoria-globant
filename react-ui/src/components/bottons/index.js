@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
+import classnames from 'classnames';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const styles = theme => ({
 
 
 const BottonTo = ({ classes, path }) => <Link to={path}>
-    <Fab color="secondary" aria-label="Add" className={[classes.margin, classes.toRight]}>
+    <Fab color="secondary" aria-label="Add" className={classnames(classes.margin, classes.toRight)}>
         <AddIcon />
     </Fab>
 </Link>;

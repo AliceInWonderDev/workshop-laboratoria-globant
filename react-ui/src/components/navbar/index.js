@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import classnames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 
 import Categories from '../categories';
@@ -23,7 +24,7 @@ const Navbar = ({ classes, show }) => <React.Fragment>
                 Workshop de React y Redux - Globant Chile / Laboratoria
             </Typography>
         </Toolbar>
-        <Toolbar className={[classes.centerContent, (!show) ? classes.hidde : '']}>
+        <Toolbar className={classnames(classes.centerContent, [(!show) ? classes.hidde : ''])}>
             <Categories />
         </Toolbar>
     </AppBar>
